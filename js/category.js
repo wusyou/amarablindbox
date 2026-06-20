@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const clickSound = new Audio("./audio/click.mp3");
+  const clickSound = new Audio("./audio/click.MP3");
   const bgMusic = document.getElementById("bg-music");
   const muteBtn = document.getElementById("mute-btn");
 

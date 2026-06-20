@@ -59,10 +59,10 @@ const achievementModal = document.getElementById("achievement-modal");
 const closeAchievementBtn = document.getElementById("close-achievement-btn");
 
 // Audio Setup
-const clickSound = new Audio("./audio/click.mp3");
-const drumrollSound = new Audio("./audio/drumroll.mp3");
-const tingSound = new Audio("./audio/ting.mp3");
-const successSound = new Audio("./audio/success.mp3");
+const clickSound = new Audio("./audio/click.MP3");
+const drumrollSound = new Audio("./audio/drumroll.MP3");
+const tingSound = new Audio("./audio/ting.MP3");
+const successSound = new Audio("./audio/success.MP3");
 let isBoxOpened = false;
 
 const totalSanrioCharacters = 40;
