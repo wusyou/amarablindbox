@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labubu Blind Box Game</title>
+    <link rel="stylesheet" href="./css/labubu-game.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header-controls">
+      <button id="coll-btn" class="coll-toggle-btn">📦 COLLECTION</button>
+      <button id="mute-btn" class="mute-toggle-btn">🔇 MUTED</button>
+    </div>
+
+    <audio id="bg-music" src="./audio/bgm.mp3" loop muted></audio>
+    <audio id="click-sound" src="./audio/click.mp3"></audio>
+
+    <div class="game-page">
+      <header class="game-header">
+        <a href="category.html" class="back-btn">BACK</a>
+        <div class="logo-container">
+          <img src="./images/content/2.png" alt="Labubu" class="game-logo" />
+        </div>
+      </header>
+
+      <main class="game-container">
+        <div class="display-stage">
+          <img
+            src="./images/Blind Boxes/2.png"
+            id="main-box"
+            alt="Blind Box"
+            class="box-img"
+          />
+
+          <div id="prize-wrapper" class="prize-wrapper hidden">
+            <div class="gold-glow"></div>
+            <img src="" id="prize-display" alt="Your Prize" class="prize-img" />
+          </div>
+        </div>
+
+        <button id="action-btn" class="open-btn">OPEN</button>
+      </main>
+    </div>
+
+    <div id="inventory-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>COLLECTION TRACKER</h3>
+          <button id="close-coll-btn" class="close-modal-btn">X</button>
+        </div>
+        <div id="inventory-grid" class="inventory-grid"></div>
+      </div>
+    </div>
+
+    <div id="achievement-modal" class="achievement-overlay hidden">
+      <div class="achievement-card">
+        <div class="achievement-icon">🏆</div>
+        <h2>NEW ACHIEVEMENT UNLOCKED:</h2>
+        <h1>LABUBU MASTER!</h1>
+        <p>100% Complete!</p>
+        <button id="close-achievement-btn" class="achievement-btn">
+          CLOSE
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="./js/labubu-game.js"></script>
+  </body>
+</html>

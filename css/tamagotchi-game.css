@@ -1,0 +1,480 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  image-rendering: pixelated;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.game-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(../images/content/desktop-background.png);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* ==========================================
+   2. HEADER CONTROLS (Pagtabihin sa Taas)
+   ========================================== */
+.header-controls {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+}
+
+.mute-toggle-btn,
+.coll-toggle-btn {
+  padding: 10px 20px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+  color: white;
+  background-color: #2696d3; /* Tamagotchi Purple */
+  border: 3px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 4px 0px #2696d3; /* Pink Shadow */
+  transition: transform 0.1s ease;
+}
+
+.mute-toggle-btn:active,
+.coll-toggle-btn:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.game-header {
+  display: flex;
+  justify-content: center;
+  padding: 70px 0 0 0;
+  position: relative;
+}
+
+.game-header .game-logo {
+  justify-content: center;
+  height: 100px;
+}
+
+.game-header .back-btn {
+  position: absolute;
+  border-radius: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #2696d3;
+  padding: 8px 20px;
+  border: 3px solid white;
+  left: 30px;
+  top: 30px;
+}
+
+.game-header .back-btn:active {
+  transform: translateY(2px);
+}
+
+/* 100% KOPYA SA SUKAT AT GAP NG LABUBU GAME */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  gap: 5%;
+}
+
+.display-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.prize-img {
+  position: relative;
+  z-index: 2;
+  height: 400px;
+  width: auto;
+  object-fit: contain;
+}
+
+.prize-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.gold-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 223, 0, 0.8) 0%,
+    rgba(255, 165, 0, 0.3) 50%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  animation: goldShine 2s ease-in-out infinite alternate;
+}
+
+.box-img {
+  height: 400px;
+  cursor: pointer;
+}
+
+.open-btn {
+  border-radius: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: #2696d3;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: white;
+  padding: 20px 100px;
+  border: 5px solid #2696d3;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================
+   3. MODAL / POPUP OVERLAY STYLING
+   ========================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 4px solid #2696d3;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 20px #2696d3;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.75rem;
+  color: #2696d3;
+}
+
+.close-modal-btn {
+  background: #2696d3;
+  border: 2px solid white;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================
+   4. INVENTORY GRID (Saktong 5 Columns para sa 35 items)
+   ========================================== */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.inventory-item {
+  aspect-ratio: 1;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inventory-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* BLACK AND WHITE STATE (Locked) */
+.inventory-item.locked img {
+  filter: grayscale(100%);
+  opacity: 0.25;
+}
+
+/* KULAY / NAKAILAW STATE (Unlocked) */
+.inventory-item.unlocked {
+  background-color: #fff;
+  border-color: #2696d3;
+  box-shadow: 0 0 8px #2696d3;
+}
+
+.inventory-item.unlocked img {
+  filter: none;
+  opacity: 1;
+}
+
+.inventory-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.inventory-grid::-webkit-scrollbar-thumb {
+  background-color: #2696d3;
+  border-radius: 10px;
+}
+
+/* RESPONSIVE VIEW (Labubu Copy) */
+@media (max-width: 768px) {
+  .game-page {
+    background-image: url(../images/content/mobile-background.png);
+  }
+
+  .game-header {
+    padding: 110px 0 0px 0;
+  }
+
+  .game-header .back-btn {
+    left: 20px;
+    top: 20px;
+    font-size: 12px;
+  }
+
+  .header-controls {
+    top: 20px;
+    right: 20px;
+  }
+
+  .mute-toggle-btn,
+  .coll-toggle-btn {
+    font-size: 0.65rem;
+    padding: 8px 12px;
+  }
+
+  .inventory-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns sa mobile */
+  }
+
+  .box-img,
+  .prize-img {
+    height: 400px;
+  }
+}
+
+@keyframes goldShine {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* --- ANIMATIONS PARA SA DRUM ROLL AT TING REVEAL --- */
+.shake-animation {
+  animation: boxShake 2s ease-in-out;
+}
+
+@keyframes boxShake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    transform: translate(-8px, -2px) rotate(-3deg);
+  }
+  20% {
+    transform: translate(6px, 3px) rotate(4deg);
+  }
+  30% {
+    transform: translate(-6px, 1px) rotate(-2deg);
+  }
+  40% {
+    transform: translate(7px, -1px) rotate(3deg);
+  }
+  50% {
+    transform: translate(-5px, 3px) rotate(-3deg);
+  }
+  60% {
+    transform: translate(6px, -2px) rotate(2deg);
+  }
+  70% {
+    transform: translate(-7px, 1px) rotate(-4deg);
+  }
+  80% {
+    transform: translate(4px, 3px) rotate(2deg);
+  }
+  90% {
+    transform: translate(-2px, -1px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.super-pop {
+  animation: superPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.5) forwards;
+}
+
+@keyframes superPopIn {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   6. BAGONG INTEGRATION: ACHIEVEMENT CARD STYLING
+   ========================================== */
+.achievement-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.achievement-overlay:not(.hidden) {
+  opacity: 1;
+}
+
+.achievement-card {
+  background: linear-gradient(135deg, #fce881, #cba135);
+  border: 4px solid #fff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: scale(0.7);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.achievement-overlay:not(.hidden) .achievement-card {
+  transform: scale(1);
+}
+
+.achievement-icon {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  animation: bounceIcon 1s infinite alternate;
+}
+
+.achievement-card h2 {
+  font-size: 0.8rem;
+  color: #333;
+  margin: 0;
+  letter-spacing: 1px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.achievement-card h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.3rem;
+  color: #fff;
+  text-shadow:
+    2px 2px 0px #000,
+    -2px -2px 0px #000,
+    2px -2px 0px #000,
+    -2px 2px 0px #000;
+  margin: 15px 0;
+}
+
+.achievement-card p {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.achievement-btn {
+  font-family: "Press Start 2P", cursive;
+  background-color: #2696d3; /* Tugma sa Tamagotchi Blue Accent mo */
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 12px 20px;
+  font-size: 0.75rem;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 4px 0px #4d3d8c;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+
+.achievement-btn:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+@keyframes bounceIcon {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
