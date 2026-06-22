@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (musicStatus === "on") {
       bgMusic.muted = false;
-      muteBtn.innerText = "🔊 MUSIC: ON";
+      muteBtn.innerText = "🔊 ON";
       muteBtn.style.backgroundColor = "#49ba6f";
 
       if (musicTime) {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bgMusic.play().catch((err) => console.log("Playback prevented:", err));
     } else {
       bgMusic.muted = true;
-      muteBtn.innerText = "🔇 MUTED";
+      muteBtn.innerText = "🔇 OFF";
       muteBtn.style.backgroundColor = "#ff66c4";
     }
 
@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (bgMusic.muted) {
         bgMusic.muted = false;
-        muteBtn.innerText = "🔊 MUSIC: ON";
+        muteBtn.innerText = "🔊 ON";
         muteBtn.style.backgroundColor = "#49ba6f";
         localStorage.setItem("bgm_status", "on");
       } else {
         bgMusic.muted = true;
-        muteBtn.innerText = "🔇 MUTED";
+        muteBtn.innerText = "🔇 OFF";
         muteBtn.style.backgroundColor = "#ff66c4";
         localStorage.setItem("bgm_status", "off");
       }

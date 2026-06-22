@@ -270,43 +270,89 @@ body {
   border-radius: 10px;
 }
 
+/* --- RESPONSIVE FIX PARA SA CELLPHONE --- */
 @media (max-width: 768px) {
+  body {
+    /* Pinipilit ang buong page na huwag magkaroon ng scrollbar sa kahit anong direksyon */
+    overflow: hidden !important;
+    height: 100vh;
+  }
+
   .game-page {
     background-image: url(../images/content/mobile-background.png);
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   .game-header {
-    padding: 110px 0 0px 0;
+    padding: 90px 0 0px 0; /* Binawasan para hindi itulak pababa ang box */
+  }
+
+  .game-header .game-logo {
+    height: 60px; /* Pinaliliit ang logo sa phone */
   }
 
   .game-header .back-btn {
-    left: 20px;
+    left: 15px;
     top: 20px;
-    font-size: 12px;
+    font-size: 11px;
+    padding: 6px 12px;
   }
 
   .header-controls {
     top: 20px;
-    right: 20px;
+    right: 15px;
   }
 
   .mute-toggle-btn,
   .coll-toggle-btn {
-    font-size: 0.65rem;
-    padding: 8px 12px;
+    font-size: 0.6rem;
+    padding: 6px 10px;
   }
 
-  .inventory-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
+  /* Bawasan ang laki ng box at prize para magkasya sa screen ng phone */
   .box-img,
   .prize-img {
-    height: 400px;
+    height: 250px !important; /* Mula 400px, ginawang 250px para kasya */
+    width: auto;
+  }
+
+  .open-btn {
+    padding: 15px 60px;
+    font-size: 16px;
   }
 
   .prize-name-tag {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  /* Pinaliliit ang gintong liwanag para hindi lumagpas sa screen ng phone */
+  .gold-glow {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  /* FIX SA COLLECTION MODAL PARA HINDI LUMAGPAS SA KALIWA/KANAN */
+  .modal-content {
+    width: 92% !important;
+    max-width: 360px !important;
+    padding: 15px;
+    margin: auto;
+  }
+
+  .inventory-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns sa mobile inventory */
+    gap: 8px;
+    max-height: 280px; /* Nilimitahan ang taas para magkasya sa screen */
+  }
+
+  .achievement-card {
+    width: 88% !important;
+    padding: 20px 15px;
+  }
+  .achievement-card h1 {
+    font-size: 1rem;
   }
 }
 

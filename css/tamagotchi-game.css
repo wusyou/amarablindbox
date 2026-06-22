@@ -7,17 +7,21 @@
 
 body {
   font-family: Arial, sans-serif;
-  overflow: hidden;
+  overflow: hidden; /* Pinipigilan ang scrollbar sa buong laro */
+  height: 100vh;
+  width: 100%;
 }
 
 .game-page {
   display: flex;
   flex-direction: column;
+  height: 100vh; /* Ginawang fixed 100vh para walang white space sa ilalim */
   min-height: 100vh;
   background-image: url(../images/content/desktop-background.png);
   background-size: cover;
   background-position: center;
   position: relative;
+  overflow: hidden;
 }
 
 /* ==========================================
@@ -38,11 +42,11 @@ body {
   font-family: "Press Start 2P", cursive;
   font-size: 0.8rem;
   color: white;
-  background-color: #2696d3; /* Tamagotchi Purple */
+  background-color: #2696d3; /* Tamagotchi Blue */
   border: 3px solid white;
   border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0px 4px 0px #2696d3; /* Pink Shadow */
+  box-shadow: 0px 4px 0px #1a6b99;
   transition: transform 0.1s ease;
 }
 
@@ -83,7 +87,6 @@ body {
   transform: translateY(2px);
 }
 
-/* 100% KOPYA SA SUKAT AT GAP NG LABUBU GAME */
 .game-container {
   display: flex;
   flex-direction: column;
@@ -215,7 +218,7 @@ body {
 }
 
 /* ==========================================
-   4. INVENTORY GRID (Saktong 5 Columns para sa 35 items)
+   4. INVENTORY GRID
    ========================================== */
 .inventory-grid {
   display: grid;
@@ -243,13 +246,11 @@ body {
   object-fit: contain;
 }
 
-/* BLACK AND WHITE STATE (Locked) */
 .inventory-item.locked img {
   filter: grayscale(100%);
   opacity: 0.25;
 }
 
-/* KULAY / NAKAILAW STATE (Unlocked) */
 .inventory-item.unlocked {
   background-color: #fff;
   border-color: #2696d3;
@@ -269,43 +270,94 @@ body {
   border-radius: 10px;
 }
 
-/* RESPONSIVE VIEW (Labubu Copy) */
+/* ==========================================
+   5. RESPONSIVE VIEW (MOBILE CRITICAL FIX)
+   ========================================== */
 @media (max-width: 768px) {
+  body {
+    overflow: hidden !important;
+    height: 100vh;
+  }
+
   .game-page {
     background-image: url(../images/content/mobile-background.png);
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   .game-header {
-    padding: 110px 0 0px 0;
+    padding: 90px 0 0px 0; /* Binabaan para umangat ang content */
+  }
+
+  .game-header .game-logo {
+    height: 60px; /* Pinaliliit para magka-room sa screen ng CP */
   }
 
   .game-header .back-btn {
-    left: 20px;
+    left: 15px;
     top: 20px;
-    font-size: 12px;
+    font-size: 11px;
+    padding: 6px 12px;
   }
 
   .header-controls {
     top: 20px;
-    right: 20px;
+    right: 15px;
   }
 
   .mute-toggle-btn,
   .coll-toggle-btn {
-    font-size: 0.65rem;
-    padding: 8px 12px;
+    font-size: 0.6rem;
+    padding: 6px 10px;
+  }
+
+  /* Ibinaba ang fixed pixels para piliting magkasya sa portrait layout */
+  .box-img,
+  .prize-img {
+    height: 250px !important;
+    width: auto;
+  }
+
+  .open-btn {
+    padding: 15px 60px;
+    font-size: 16px;
+  }
+
+  /* Pinaliliit ang glow para walang whitespace sa gilid o baba */
+  .gold-glow {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  /* PERPEKTONG CENTERING PARA SA COLLECTION MODAL */
+  .modal-content {
+    width: 92% !important;
+    max-width: 360px !important;
+    padding: 15px;
+    margin: auto;
   }
 
   .inventory-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns sa mobile */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns sa CP */
+    gap: 8px;
+    max-height: 280px;
   }
 
-  .box-img,
-  .prize-img {
-    height: 400px;
+  /* Win Modal Fixes */
+  .achievement-card {
+    width: 88% !important;
+    padding: 20px 15px;
+  }
+
+  .achievement-card h1 {
+    font-size: 1rem;
   }
 }
 
+/* ==========================================
+   6. ANIMATIONS
+   ========================================== */
 @keyframes goldShine {
   0% {
     transform: translate(-50%, -50%) scale(0.9);
@@ -317,7 +369,6 @@ body {
   }
 }
 
-/* --- ANIMATIONS PARA SA DRUM ROLL AT TING REVEAL --- */
 .shake-animation {
   animation: boxShake 2s ease-in-out;
 }
@@ -377,7 +428,7 @@ body {
 }
 
 /* ==========================================
-   6. BAGONG INTEGRATION: ACHIEVEMENT CARD STYLING
+   7. ACHIEVEMENT POPUP
    ========================================== */
 .achievement-overlay {
   position: fixed;
@@ -452,14 +503,14 @@ body {
 
 .achievement-btn {
   font-family: "Press Start 2P", cursive;
-  background-color: #2696d3; /* Tugma sa Tamagotchi Blue Accent mo */
+  background-color: #2696d3;
   color: #fff;
   border: 3px solid #fff;
   padding: 12px 20px;
   font-size: 0.75rem;
   border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0px 4px 0px #4d3d8c;
+  box-shadow: 0px 4px 0px #1a6b99;
   transition:
     transform 0.1s,
     box-shadow 0.1s;

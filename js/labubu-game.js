@@ -30,13 +30,13 @@ if (bgMusic && muteBtn) {
 
   if (musicStatus === "on") {
     bgMusic.muted = false;
-    muteBtn.innerText = "🔊 MUSIC: ON";
+    muteBtn.innerText = "🔊 ON";
     muteBtn.style.backgroundColor = "#49ba6f";
     if (musicTime) bgMusic.currentTime = parseFloat(musicTime);
     bgMusic.play().catch((err) => console.log("BGM playback delayed:", err));
   } else {
     bgMusic.muted = true;
-    muteBtn.innerText = "🔇 MUTED";
+    muteBtn.innerText = "🔇 OFF";
     muteBtn.style.backgroundColor = "#964f43";
   }
 
@@ -44,7 +44,7 @@ if (bgMusic && muteBtn) {
     bgMusic.play().catch((err) => console.log("BGM activated:", err));
     if (bgMusic.muted) {
       bgMusic.muted = false;
-      muteBtn.innerText = "🔊 MUSIC: ON";
+      muteBtn.innerText = "🔊 ON";
       muteBtn.style.backgroundColor = "#49ba6f";
       localStorage.setItem("bgm_status", "on");
     } else {

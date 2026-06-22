@@ -6,17 +6,21 @@
 
 body {
   font-family: Arial, sans-serif;
-  overflow: hidden;
+  overflow: hidden; /* Tinanggal ang scrollbar para hindi gumalaw ang page */
+  height: 100vh;
+  width: 100%;
 }
 
 .game-page {
   display: flex;
   flex-direction: column;
+  height: 100vh; /* Eksaktong isang screen lang ang sakop para walang puting space */
   min-height: 100vh;
   background-image: url(../images/content/desktop-background.png);
   background-size: cover;
   background-position: center;
   position: relative;
+  overflow: hidden;
 }
 
 .header-controls {
@@ -38,7 +42,7 @@ body {
   border: 3px solid white;
   border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0px 4px 0px #4d3d8c;
+  box-shadow: 0px 4px 0px #5c2f27;
   transition: transform 0.1s ease;
 }
 
@@ -157,6 +161,9 @@ body {
   display: none !important;
 }
 
+/* ==========================================
+   3. MODAL / POPUP OVERLAY STYLING
+   ========================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -257,42 +264,94 @@ body {
   border-radius: 10px;
 }
 
+/* ==========================================
+   5. RESPONSIVE VIEW (MOBILE CRITICAL FIX)
+   ========================================== */
 @media (max-width: 768px) {
+  body {
+    overflow: hidden !important;
+    height: 100vh;
+  }
+
   .game-page {
     background-image: url(../images/content/mobile-background.png);
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   .game-header {
-    padding: 110px 0 0px 0;
+    padding: 90px 0 0px 0; /* Binawasan ang espasyo sa itaas */
+  }
+
+  .game-header .game-logo {
+    height: 60px; /* Pinaliliit ang logo sa mobile view */
   }
 
   .game-header .back-btn {
-    left: 20px;
+    left: 15px;
     top: 20px;
-    font-size: 12px;
+    font-size: 11px;
+    padding: 6px 12px;
   }
 
   .header-controls {
     top: 20px;
-    right: 20px;
+    right: 15px;
   }
 
   .mute-toggle-btn,
   .coll-toggle-btn {
-    font-size: 0.65rem;
-    padding: 8px 12px;
+    font-size: 0.6rem;
+    padding: 6px 10px;
+  }
+
+  /* Pinaliliit ang mga sukat para magkasya nang perpekto sa isang screen */
+  .box-img,
+  .prize-img {
+    height: 250px !important;
+    width: auto;
+  }
+
+  .open-btn {
+    padding: 15px 60px;
+    font-size: 16px;
+  }
+
+  /* Pinigilang lumagpas ang glow effect */
+  .gold-glow {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  /* FIX SA COLLECTION MODAL CENTERING */
+  .modal-content {
+    width: 92% !important;
+    max-width: 360px !important;
+    padding: 15px;
+    margin: auto;
   }
 
   .inventory-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 columns sa selyular */
+    gap: 8px;
+    max-height: 280px;
   }
 
-  .box-img,
-  .prize-img {
-    height: 400px;
+  /* Achievement Popup Responsive Settings */
+  .achievement-card {
+    width: 88% !important;
+    padding: 20px 15px;
+  }
+
+  .achievement-card h1 {
+    font-size: 1rem;
   }
 }
 
+/* ==========================================
+   6. ANIMATIONS
+   ========================================== */
 @keyframes popIn {
   0% {
     transform: scale(0.3);
@@ -376,6 +435,9 @@ body {
   }
 }
 
+/* ==========================================
+   7. ACHIEVEMENT OVERLAY
+   ========================================== */
 .achievement-overlay {
   position: fixed;
   top: 0;
@@ -456,7 +518,7 @@ body {
   font-size: 0.75rem;
   border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0 4px 0px #4d3d8c;
+  box-shadow: 0 4px 0px #5c2f27;
   transition:
     transform 0.1s,
     box-shadow 0.1s;
