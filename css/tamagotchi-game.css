@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  overflow: hidden; /* Pinipigilan ang scrollbar sa buong laro */
+  overflow: hidden;
   height: 100vh;
   width: 100%;
 }
@@ -15,7 +15,7 @@ body {
 .game-page {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Ginawang fixed 100vh para walang white space sa ilalim */
+  height: 100vh;
   min-height: 100vh;
   background-image: url(../images/content/desktop-background.png);
   background-size: cover;
@@ -24,9 +24,6 @@ body {
   overflow: hidden;
 }
 
-/* ==========================================
-   2. HEADER CONTROLS (Pagtabihin sa Taas)
-   ========================================== */
 .header-controls {
   position: absolute;
   top: 30px;
@@ -42,7 +39,7 @@ body {
   font-family: "Press Start 2P", cursive;
   font-size: 0.8rem;
   color: white;
-  background-color: #2696d3; /* Tamagotchi Blue */
+  background-color: #2696d3;
   border: 3px solid white;
   border-radius: 15px;
   cursor: pointer;
@@ -164,9 +161,6 @@ body {
   display: none !important;
 }
 
-/* ==========================================
-   3. MODAL / POPUP OVERLAY STYLING
-   ========================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -217,9 +211,6 @@ body {
   justify-content: center;
 }
 
-/* ==========================================
-   4. INVENTORY GRID
-   ========================================== */
 .inventory-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -270,9 +261,6 @@ body {
   border-radius: 10px;
 }
 
-/* ==========================================
-   5. RESPONSIVE VIEW (MOBILE CRITICAL FIX)
-   ========================================== */
 @media (max-width: 768px) {
   body {
     overflow: hidden !important;
@@ -287,11 +275,11 @@ body {
   }
 
   .game-header {
-    padding: 90px 0 0px 0; /* Binabaan para umangat ang content */
+    padding: 90px 0 0px 0;
   }
 
   .game-header .game-logo {
-    height: 60px; /* Pinaliliit para magka-room sa screen ng CP */
+    height: 60px;
   }
 
   .game-header .back-btn {
@@ -312,7 +300,6 @@ body {
     padding: 6px 10px;
   }
 
-  /* Ibinaba ang fixed pixels para piliting magkasya sa portrait layout */
   .box-img,
   .prize-img {
     height: 250px !important;
@@ -324,13 +311,11 @@ body {
     font-size: 16px;
   }
 
-  /* Pinaliliit ang glow para walang whitespace sa gilid o baba */
   .gold-glow {
     width: 280px !important;
     height: 280px !important;
   }
 
-  /* PERPEKTONG CENTERING PARA SA COLLECTION MODAL */
   .modal-content {
     width: 92% !important;
     max-width: 360px !important;
@@ -339,12 +324,11 @@ body {
   }
 
   .inventory-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns sa CP */
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     max-height: 280px;
   }
 
-  /* Win Modal Fixes */
   .achievement-card {
     width: 88% !important;
     padding: 20px 15px;
@@ -355,9 +339,6 @@ body {
   }
 }
 
-/* ==========================================
-   6. ANIMATIONS
-   ========================================== */
 @keyframes goldShine {
   0% {
     transform: translate(-50%, -50%) scale(0.9);
@@ -427,9 +408,6 @@ body {
   }
 }
 
-/* ==========================================
-   7. ACHIEVEMENT POPUP
-   ========================================== */
 .achievement-overlay {
   position: fixed;
   top: 0;

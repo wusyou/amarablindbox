@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  overflow: hidden; /* Tinanggal ang scrollbar para hindi gumalaw ang page */
+  overflow: hidden;
   height: 100vh;
   width: 100%;
 }
@@ -14,7 +14,7 @@ body {
 .game-page {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Eksaktong isang screen lang ang sakop para walang puting space */
+  height: 100vh;
   min-height: 100vh;
   background-image: url(../images/content/desktop-background.png);
   background-size: cover;
@@ -161,9 +161,6 @@ body {
   display: none !important;
 }
 
-/* ==========================================
-   3. MODAL / POPUP OVERLAY STYLING
-   ========================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -264,9 +261,6 @@ body {
   border-radius: 10px;
 }
 
-/* ==========================================
-   5. RESPONSIVE VIEW (MOBILE CRITICAL FIX)
-   ========================================== */
 @media (max-width: 768px) {
   body {
     overflow: hidden !important;
@@ -281,11 +275,11 @@ body {
   }
 
   .game-header {
-    padding: 90px 0 0px 0; /* Binawasan ang espasyo sa itaas */
+    padding: 90px 0 0px 0;
   }
 
   .game-header .game-logo {
-    height: 60px; /* Pinaliliit ang logo sa mobile view */
+    height: 60px;
   }
 
   .game-header .back-btn {
@@ -306,7 +300,6 @@ body {
     padding: 6px 10px;
   }
 
-  /* Pinaliliit ang mga sukat para magkasya nang perpekto sa isang screen */
   .box-img,
   .prize-img {
     height: 250px !important;
@@ -318,13 +311,11 @@ body {
     font-size: 16px;
   }
 
-  /* Pinigilang lumagpas ang glow effect */
   .gold-glow {
     width: 280px !important;
     height: 280px !important;
   }
 
-  /* FIX SA COLLECTION MODAL CENTERING */
   .modal-content {
     width: 92% !important;
     max-width: 360px !important;
@@ -333,12 +324,11 @@ body {
   }
 
   .inventory-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns sa selyular */
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     max-height: 280px;
   }
 
-  /* Achievement Popup Responsive Settings */
   .achievement-card {
     width: 88% !important;
     padding: 20px 15px;
@@ -349,9 +339,6 @@ body {
   }
 }
 
-/* ==========================================
-   6. ANIMATIONS
-   ========================================== */
 @keyframes popIn {
   0% {
     transform: scale(0.3);
@@ -435,9 +422,6 @@ body {
   }
 }
 
-/* ==========================================
-   7. ACHIEVEMENT OVERLAY
-   ========================================== */
 .achievement-overlay {
   position: fixed;
   top: 0;

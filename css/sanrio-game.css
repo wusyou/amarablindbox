@@ -270,10 +270,8 @@ body {
   border-radius: 10px;
 }
 
-/* --- RESPONSIVE FIX PARA SA CELLPHONE --- */
 @media (max-width: 768px) {
   body {
-    /* Pinipilit ang buong page na huwag magkaroon ng scrollbar sa kahit anong direksyon */
     overflow: hidden !important;
     height: 100vh;
   }
@@ -286,11 +284,11 @@ body {
   }
 
   .game-header {
-    padding: 90px 0 0px 0; /* Binawasan para hindi itulak pababa ang box */
+    padding: 90px 0 0px 0;
   }
 
   .game-header .game-logo {
-    height: 60px; /* Pinaliliit ang logo sa phone */
+    height: 60px;
   }
 
   .game-header .back-btn {
@@ -311,10 +309,9 @@ body {
     padding: 6px 10px;
   }
 
-  /* Bawasan ang laki ng box at prize para magkasya sa screen ng phone */
   .box-img,
   .prize-img {
-    height: 250px !important; /* Mula 400px, ginawang 250px para kasya */
+    height: 250px !important;
     width: auto;
   }
 
@@ -327,13 +324,11 @@ body {
     font-size: 0.8rem;
   }
 
-  /* Pinaliliit ang gintong liwanag para hindi lumagpas sa screen ng phone */
   .gold-glow {
     width: 280px !important;
     height: 280px !important;
   }
 
-  /* FIX SA COLLECTION MODAL PARA HINDI LUMAGPAS SA KALIWA/KANAN */
   .modal-content {
     width: 92% !important;
     max-width: 360px !important;
@@ -342,9 +337,9 @@ body {
   }
 
   .inventory-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns sa mobile inventory */
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
-    max-height: 280px; /* Nilimitahan ang taas para magkasya sa screen */
+    max-height: 280px;
   }
 
   .achievement-card {
