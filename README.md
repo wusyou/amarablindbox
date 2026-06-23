@@ -38,3 +38,12 @@ amarablindbox/
 ├── sanrio-game.html     # Sanrio collection playground
 ├── labubu-game.html     # Labubu collection playground
 └── tamagotchi-game.html # Tamagotchi collection playground
+
+---
+
+## 🚀 Local Setup
+1. Clone the repository to your machine:
+git clone [https://github.com/wusyou/amarablindbox.git](https://github.com/wusyou/amarablindbox.git)
+
+2. Open the project directory using your preferred text editor (e.g., VS Code).
+3. Run the application locally by opening index.html with a local server extension (such as VS Code Live Server).
