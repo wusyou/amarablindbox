@@ -38,6 +38,7 @@ amarablindbox/
 ├── sanrio-game.html     # Sanrio collection playground
 ├── labubu-game.html     # Labubu collection playground
 └── tamagotchi-game.html # Tamagotchi collection playground
+```
 
 ---
 
